@@ -23,11 +23,13 @@ const footerLinks = {
 
 // Réseaux sociaux
 const socialLinks = [
-  { href: "#", icon: Twitter, label: "Twitter" },
-  { href: "#", icon: Facebook, label: "Facebook" },
-  { href: "#", icon: Instagram, label: "Instagram" },
-  { href: "#", icon: Youtube, label: "YouTube" },
+  { href: "https://twitter.com/yourusername", icon: Twitter, label: "Twitter" },
+  { href: "https://www.facebook.com/mohamed.benrjab.33mvrgff", icon: Facebook, label: "Facebook" },
+  { href: "https://www.instagram.com/mohamed_ben.rjab/", icon: Instagram, label: "Instagram" },
+  { href: "https://www.youtube.com/@NitroFX-1", icon: Youtube, label: "YouTube" },
+  { href: "https://www.tiktok.com/@medbenrjab?lang=fr", icon: Zap, label: "TikTok" },
 ]
+
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
