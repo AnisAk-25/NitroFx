@@ -29,22 +29,6 @@ const socialLinks = [
   { href: "https://www.youtube.com/@NitroFX-1", icon: Youtube, label: "YouTube" },
 ]
 
-{socialLinks.map((social) => (
-  <a
-  key={social.label}
-  href={social.href}
-  target="_blank"
-  rel="noopener noreferrer"
-  className="text-gray-400 hover:text-blue-400"
->
-  <social.icon className="h-5 w-5" />
-  <span className="sr-only">{social.label}</span>
-</a>
-
-))}
-
-
-
 export default function Footer() {
   const currentYear = new Date().getFullYear()
 
@@ -65,10 +49,16 @@ export default function Footer() {
             </p>
             <div className="flex space-x-4">
               {socialLinks.map((social) => (
-                <Link key={social.label} href={social.href} className="text-gray-400 hover:text-blue-400">
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-blue-400"
+                >
                   <social.icon className="h-5 w-5" />
                   <span className="sr-only">{social.label}</span>
-                </Link>
+                </a>
               ))}
             </div>
           </div>
