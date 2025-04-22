@@ -30,16 +30,17 @@ const socialLinks = [
 ]
 
 {socialLinks.map((social) => (
-  <Link
-    key={social.label}
-    href={social.href}
-    className="text-gray-400 hover:text-blue-400"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    <social.icon className="h-5 w-5" />
-    <span className="sr-only">{social.label}</span>
-  </Link>
+  <a
+  key={social.label}
+  href={social.href}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="text-gray-400 hover:text-blue-400"
+>
+  <social.icon className="h-5 w-5" />
+  <span className="sr-only">{social.label}</span>
+</a>
+
 ))}
 
 
