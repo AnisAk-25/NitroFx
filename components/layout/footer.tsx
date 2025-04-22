@@ -23,12 +23,25 @@ const footerLinks = {
 
 // Réseaux sociaux
 const socialLinks = [
-  { href: "https://twitter.com/yourusername", icon: Twitter, label: "Twitter" },
+  { href: "https://www.twitter.com/yourusername", icon: Twitter, label: "Twitter" },
   { href: "https://www.facebook.com/mohamed.benrjab.33mvrgff", icon: Facebook, label: "Facebook" },
   { href: "https://www.instagram.com/mohamed_ben.rjab/", icon: Instagram, label: "Instagram" },
   { href: "https://www.youtube.com/@NitroFX-1", icon: Youtube, label: "YouTube" },
-  { href: "https://www.tiktok.com/@medbenrjab?lang=fr", icon: Zap, label: "TikTok" },
 ]
+
+{socialLinks.map((social) => (
+  <Link
+    key={social.label}
+    href={social.href}
+    className="text-gray-400 hover:text-blue-400"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <social.icon className="h-5 w-5" />
+    <span className="sr-only">{social.label}</span>
+  </Link>
+))}
+
 
 
 export default function Footer() {
