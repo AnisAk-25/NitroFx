@@ -15,8 +15,8 @@ import { motion, AnimatePresence } from "framer-motion"
 const navLinks = [
   { href: "/", label: "Accueil" },
   { href: "#about", label: "À Propos" },
-  { href: "#packages", label: "Packs Trading" },
-  { href: "#courses", label: "Formation" },
+  // { href: "#packages", label: "Packs Trading" },
+  // { href: "#courses", label: "Formation" },
   { href: "#testimonials", label: "Témoignages" },
 ]
 
@@ -138,3 +138,4 @@ export default function Navbar() {
     </header>
   )
 }
+

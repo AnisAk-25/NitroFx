@@ -1,6 +1,6 @@
 import HeroSection from "@/components/sections/hero-section"
 import AboutSection from "@/components/sections/about-section"
-import PackagesSection from "@/components/sections/packages-section"
+// import PackagesSection from "@/components/sections/packages-section" // نحيناه
 import FeatureSection from "@/components/sections/feature-section"
 import VideoSection from "@/components/sections/video-section"
 import CoursesSection from "@/components/sections/courses-section"
@@ -12,7 +12,7 @@ export default function Home() {
     <div className="flex flex-col min-h-screen">
       <HeroSection />
       <AboutSection />
-      <PackagesSection />
+      {/* <PackagesSection /> */} {/* نحينا section متاع packs */}
       <FeatureSection />
       <VideoSection />
       <CoursesSection />
@@ -21,3 +21,4 @@ export default function Home() {
     </div>
   )
 }
+

@@ -9,8 +9,8 @@ import { Facebook, Instagram, Twitter, Youtube, Zap } from "lucide-react"
 const footerLinks = {
   quickLinks: [
     { href: "/", label: "Accueil" },
-    { href: "#packages", label: "Packs Trading" },
-    { href: "#courses", label: "Formation" },
+    // { href: "#packages", label: "Packs Trading" },
+    // { href: "#courses", label: "Formation" },
     { href: "#testimonials", label: "Témoignages" },
   ],
   legal: [
@@ -20,6 +20,7 @@ const footerLinks = {
     { href: "#", label: "Avertissement sur les risques" },
   ],
 }
+
 
 // Réseaux sociaux
 const socialLinks = [
