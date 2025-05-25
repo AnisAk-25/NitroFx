@@ -65,7 +65,9 @@ export default function CourseCard({ course }: { course: Course }) {
           <div className="text-xs text-gray-500">{course.lessons} leçons</div>
         </CardContent>
         <CardFooter className="border-t border-gray-800 p-5 flex items-center justify-between">
-          <span className="font-bold">{course.price}</span>
+          <span className="font-bold bg-gradient-to-r from-yellow-400 to-pink-500 bg-clip-text text-transparent animate-pulse">
+            Soon 🔥
+          </span>
           <Button variant="outline" className="border-blue-500 text-blue-500 hover:bg-blue-500/10">
             Voir le cours
           </Button>

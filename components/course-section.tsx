@@ -20,7 +20,7 @@ interface Course {
 }
 
 interface CourseSectionProps {
-  courses: Course[]
+  courses: Course[]  
 }
 
 export default function CourseSection({ courses }: CourseSectionProps) {
@@ -68,7 +68,7 @@ export default function CourseSection({ courses }: CourseSectionProps) {
               <div className="text-xs text-gray-500">{course.lessons} leçons</div>
             </CardContent>
             <CardFooter className="border-t border-gray-800 p-5 flex items-center justify-between">
-              <span className="font-bold">{course.price}</span>
+              <span className="font-bold">Soon</span>
               <Button variant="outline" className="border-blue-500 text-blue-500 hover:bg-blue-500/10">
                 Voir le cours
               </Button>

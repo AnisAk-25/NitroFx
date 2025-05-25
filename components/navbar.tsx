@@ -37,13 +37,18 @@ export default function Navbar() {
             NitroFx
           </span>
         </Link>
+
+        {/* Navigation Desktop */}
         <nav className="hidden md:flex items-center space-x-8">
           <Link href="/" className="text-sm font-medium text-white hover:text-blue-400 transition-colors">
             Accueil
           </Link>
-          <Link href="#about" className="text-sm font-medium text-white hover:text-blue-400 transition-colors">
+
+          {/* ⚠️ إخفاء مؤقت لرابط À Propos */}
+          {/* <Link href="#about" className="text-sm font-medium text-white hover:text-blue-400 transition-colors">
             À Propos
-          </Link>
+          </Link> */}
+
           <Link href="#packages" className="text-sm font-medium text-white hover:text-blue-400 transition-colors">
             Packs Trading
           </Link>
@@ -54,12 +59,16 @@ export default function Navbar() {
             Témoignages
           </Link>
         </nav>
+
+        {/* Boutons d'action Desktop */}
         <div className="hidden md:flex items-center space-x-4">
           <Button variant="outline" className="border-blue-500 text-blue-500 hover:bg-blue-500/10">
             Se Connecter
           </Button>
           <Button className="bg-blue-600 hover:bg-blue-700 text-white">S'inscrire</Button>
         </div>
+
+        {/* Bouton menu mobile */}
         <button
           className="md:hidden flex items-center justify-center rounded-md p-2 text-white hover:bg-blue-900/20"
           onClick={() => setIsOpen(!isOpen)}
@@ -67,6 +76,8 @@ export default function Navbar() {
           {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
       </div>
+
+      {/* Mobile Menu */}
       {isOpen && (
         <div className="md:hidden fixed inset-0 top-16 bg-black/95 backdrop-blur-md z-40 flex flex-col">
           <div className="flex flex-col space-y-4 p-6">
@@ -77,13 +88,16 @@ export default function Navbar() {
             >
               Accueil
             </Link>
-            <Link
+
+            {/* ⚠️ إخفاء مؤقت لرابط À Propos */}
+            {/* <Link
               href="#about"
               className="text-lg font-medium text-white hover:text-blue-400 transition-colors py-2"
               onClick={() => setIsOpen(false)}
             >
               À Propos
-            </Link>
+            </Link> */}
+
             <Link
               href="#packages"
               className="text-lg font-medium text-white hover:text-blue-400 transition-colors py-2"
@@ -105,6 +119,7 @@ export default function Navbar() {
             >
               Témoignages
             </Link>
+
             <div className="pt-4 flex flex-col space-y-4">
               <Button variant="outline" className="w-full border-blue-500 text-blue-500 hover:bg-blue-500/10">
                 Se Connecter

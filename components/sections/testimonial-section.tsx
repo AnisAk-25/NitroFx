@@ -1,108 +1,83 @@
-/**
- * Section des témoignages
- * Présente les avis des clients
- */
 "use client"
 
-import { useRef } from "react"
+import { useState, useEffect } from "react"
 import Image from "next/image"
-import { Star } from "lucide-react"
-import { Card, CardContent } from "@/components/ui/card"
-import { useInView, motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 
-const testimonials = [
-  {
-    name: "Thomas L.",
-    role: "Trader Particulier",
-    content:
-      "Les signaux de NitroFx ont complètement transformé mon approche du trading. Je suis passé d'une rentabilité négative à un gain mensuel constant.",
-    avatar: "/confident-professional.png",
-    rating: 5,
-  },
-  {
-    name: "Sophie M.",
-    role: "Investisseur Débutant",
-    content:
-      "Les cours sont incroyablement bien structurés et faciles à suivre. J'ai appris plus en 2 mois avec NitroFx qu'en 1 an par moi-même.",
-    avatar: "/confident-professional.png",
-    rating: 5,
-  },
-  {
-    name: "Alexandre D.",
-    role: "Trader à Temps Plein",
-    content:
-      "Le pack Platinum est un investissement qui s'est rentabilisé en moins d'un mois. Les analyses techniques sont d'une précision remarquable.",
-    avatar: "/confident-bearded-professional.png",
-    rating: 5,
-  },
-  {
-    name: "Marie C.",
-    role: "Analyste Financier",
-    content:
-      "En tant que professionnelle de la finance, je suis impressionnée par la qualité des analyses fournies. Un service qui se démarque vraiment.",
-    avatar: "/confident-professional.png",
-    rating: 4,
-  },
+const items = [
+  { type: "video", src: "/feedback1.mp4" }, // فيديو (27 ثانية)
+  ...Array.from({ length: 13 }, (_, i) => ({
+    type: "image",
+    src: `/feedback${i + 2}.jpeg`,
+  })),
 ]
 
-export default function TestimonialSection() {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: "-100px 0px" })
+export default function TestimonialSlider() {
+  const [index, setIndex] = useState(0)
+
+  useEffect(() => {
+    const currentItem = items[index]
+    const duration = currentItem.type === "video" ? 27000 : 5000 // فيديو 27 ثانية، صورة 5 ثواني
+
+    const timer = setTimeout(() => {
+      setIndex((prev) => (prev + 1) % items.length)
+    }, duration)
+
+    return () => clearTimeout(timer)
+  }, [index])
 
   return (
     <section id="testimonials" className="py-20 bg-gradient-to-b from-blue-950 to-black">
-      <div className="container px-4 md:px-6">
-        <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-          <div className="inline-block rounded-lg bg-blue-100/10 px-3 py-1 text-sm text-blue-400 mb-2">Témoignages</div>
-          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-white">
-            Ce que Disent Nos Clients
-          </h2>
-          <p className="max-w-[700px] text-gray-300 md:text-xl/relaxed">
-            Découvrez comment NitroFx aide les traders à atteindre leurs objectifs
-          </p>
+      <div className="container px-4 md:px-6 text-center space-y-4">
+        <div className="inline-block rounded-lg bg-blue-100/10 px-3 py-1 text-sm text-blue-400">
+          Témoignages
+        </div>
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white">Avis de nos clients</h2>
+        <p className="text-gray-300 max-w-xl mx-auto md:text-xl">
+          Découvrez leurs retours authentiques et spontanés
+        </p>
+
+        <div className="relative w-full max-w-2xl mx-auto aspect-video rounded-xl overflow-hidden shadow-lg">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={index}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.8 }}
+              className="absolute inset-0"
+            >
+              {items[index].type === "image" ? (
+                <Image
+                  src={items[index].src}
+                  alt={`feedback-${index}`}
+                  fill
+                  className="object-contain"
+                />
+              ) : (
+                <video
+                  src={items[index].src}
+                  controls
+                  autoPlay
+                  muted
+                  className="w-full h-full object-cover"
+                />
+              )}
+            </motion.div>
+          </AnimatePresence>
         </div>
 
-        <div ref={ref} className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {testimonials.map((testimonial, i) => (
-            <motion.div
+        <div className="flex justify-center space-x-2 mt-4">
+          {items.map((_, i) => (
+            <button
               key={i}
-              initial={{ opacity: 0, y: 50 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-            >
-              <Card className="h-full border-blue-900/20 bg-gradient-to-br from-blue-950/50 to-black">
-                <CardContent className="p-6">
-                  <div className="flex items-center space-x-4 mb-4">
-                    <div className="relative h-12 w-12 rounded-full overflow-hidden">
-                      <Image
-                        src={testimonial.avatar || "/placeholder.svg"}
-                        alt={testimonial.name}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                    <div>
-                      <h4 className="font-bold">{testimonial.name}</h4>
-                      <p className="text-sm text-gray-400">{testimonial.role}</p>
-                    </div>
-                  </div>
-                  <div className="flex mb-4">
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <Star
-                        key={i}
-                        className={`h-4 w-4 ${
-                          i < testimonial.rating ? "text-yellow-400 fill-yellow-400" : "text-gray-600"
-                        }`}
-                      />
-                    ))}
-                  </div>
-                  <p className="text-gray-300 italic">"{testimonial.content}"</p>
-                </CardContent>
-              </Card>
-            </motion.div>
+              onClick={() => setIndex(i)}
+              className={`w-3 h-3 rounded-full ${i === index ? "bg-blue-400" : "bg-gray-500/50"}`}
+            />
           ))}
         </div>
       </div>
     </section>
   )
 }
+
